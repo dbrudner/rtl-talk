@@ -1,0 +1,39 @@
+Maybe need to pop an example of bad testing.
+
+Slide 1 (intro):
+	Give a quick intro of myself -- where do you work, what do you do, how long have you been programming, etc.
+	Introduce as webmaster of paulslunch.com
+	Introducing react-testing-library
+		-Helper functions for rendering, querying, and testing react components
+		-You can think of it as an alternative to enzyme
+	Quick aside about personal opinions
+		-A lot of what I'm going to talk about is highly opinionated. If you find yourself disagreeing, that's totally fine and I'd encourage you to follow whatever model works for you and hold off on sharing until the end.
+	Goals (by the end of this talk, you should walk out of here with):
+		1. Understanding of the philosophy behind react-testing-library (testing an app like a user, not a robot)
+			-Write tests that give confidence
+			-Avoiding uneccessary tests
+Slide 2 (why do we write tests?):
+	-TDD - perhaps a faster way to develop?
+	-Gives us confidence our app is working how it's supposed
+	-Regression
+	-Documentation for incoming devs
+	-Tests should be saving you time in the long run
+		-Bugs are expensive
+	-Documetation - provides the authors intent for tests and test subject
+	-Fun - green check marks look cool and feel satisfying
+Slide 3 (what are good/bad tests):
+	-Tests that need to be updated/changed frequently
+	-Tests for the sake of tests/coverage
+		-What does code coverage really measure? Is it really a measure of quality?
+		-Having 100% code coverage is almost certainly not a good thing because you'll be spending time figuring out how to test weird things + be constantly updating tests every change (i.e., don't check to see if there's a header with a text of "BLAH" on a page, because what are we even really doing at that point?)
+	-Tests that focus on implementation
+		-Users don't care about implementation
+		-Slows down refactoring
+		-Testing for implementation can lead to false positives/negatives, most notably when shallow rendering and directly calling class methods rather than rendering and firing actual events on dom
+Slide 4 (what: React Testing Library):
+	-Testing in the same way that users interact with your app
+	-Example of form w/ react testing lib
+		-Users don't use jquery selectors to find your input and set a value or call a class method to update state.
+		-Ensures that your application is accessible and follows good HTML guidelines (tying inputs to labels, etc.)
+	-If these look like integration tests, it's because they are integration tests.
+	-Unit tests are still useful for testing functional logic and adding granularity

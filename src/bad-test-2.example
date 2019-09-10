@@ -1,0 +1,7 @@
+it('should update the count by 1 when invoked by default', () => {
+    const wrapper = shallow(<Home />);
+    const instance = wrapper.instance();
+    expect(wrapper.state('counter')).toBe(0);
+    instance.incrementCounter();
+    expect(wrapper.state('counter')).toBe(1);
+});

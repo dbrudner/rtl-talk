@@ -1,0 +1,6 @@
+it('checks DatePicker opens', () => {
+	const DateComponent = mount(<DateInput />),
+	dateInput = DateComponent.find("input[type='text']");
+	dateInput.simulate('click');
+	expect(DateComponent.find('.react-datepicker')).toHaveLength(1);
+});
