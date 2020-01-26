@@ -1,5 +1,5 @@
 // Import React
-import React from "react";
+import React from 'react';
 
 // Import Spectacle Core tags
 import {
@@ -13,37 +13,37 @@ import {
 	Slide,
 	Text,
 	Code,
-	CodePane,
-} from "spectacle";
+	CodePane
+} from 'spectacle';
 
 // Import theme
-import createTheme from "spectacle/lib/themes/default";
+import createTheme from 'spectacle/lib/themes/default';
 
 // Require CSS
-require("normalize.css");
+require('normalize.css');
 
 const theme = createTheme(
 	{
-		primary: "white",
-		secondary: "#1F2022",
-		tertiary: "#03A9FC",
-		quaternary: "#CECECE",
+		primary: 'white',
+		secondary: '#1F2022',
+		tertiary: '#03A9FC',
+		quaternary: '#CECECE'
 	},
 	{
-		primary: "Montserrat",
-		secondary: "Helvetica",
-	},
+		primary: 'Montserrat',
+		secondary: 'Helvetica'
+	}
 );
 
 export default class Presentation extends React.Component {
 	render() {
 		return (
 			<Deck
-				transition={["zoom", "slide"]}
+				transition={['zoom', 'slide']}
 				transitionDuration={500}
 				theme={theme}
 			>
-				<Slide transition={["zoom"]} bgColor="primary">
+				<Slide transition={['zoom']} bgColor="primary">
 					<Heading
 						size={1}
 						fit
@@ -53,14 +53,13 @@ export default class Presentation extends React.Component {
 					>
 						React Testing Library
 					</Heading>
-					<Quote textColor="tertiary" style={{ marginTop: "60px" }}>
+					<Quote textColor="tertiary" style={{ marginTop: '60px' }}>
 						"Simple and complete React DOM testing utilities that
 						encourage good testing practices."
 					</Quote>
-					<Cite textColor="secondary">RTL docs</Cite>
 				</Slide>
 				<Slide
-					transition={["fade"]}
+					transition={['fade']}
 					bgColor="secondary"
 					textColor="primary"
 				>
@@ -83,10 +82,7 @@ export default class Presentation extends React.Component {
 					</List>
 				</Slide>
 				<Slide>
-					<Heading>
-						Bad vs. good tests -- the philosophy behind RTL
-					</Heading>
-					<Heading>Bad</Heading>
+					<Heading>Bad testing practices</Heading>
 					<List>
 						<ListItem>Tests for the sake of having tests</ListItem>
 						<ListItem>
@@ -96,54 +92,74 @@ export default class Presentation extends React.Component {
 					</List>
 				</Slide>
 				<Slide>
-					<Heading>Good</Heading>
+					<Heading>Better testing practices</Heading>
 					<List>
-						<ListItem>Integration-ish tests</ListItem>
 						<ListItem>
-							Tests that look at web apps like users, not
+							Tests that act on web apps like users, not
 							robots/parsers
 						</ListItem>
-						<ListItem>As little mocking as possible</ListItem>
 						<ListItem>
-							Shouldn't need to be updated after refactoring
-							subject
+							As little mocking as possible (though mocking is
+							unavoidable)
+						</ListItem>
+						<ListItem>
+							Tests shouldn't break after refactoring
 						</ListItem>
 					</List>
 				</Slide>
 				<Slide>
-					<Heading>Bad test example 1</Heading>
+					<Heading>"Bad" test example</Heading>
 					<CodePane
 						lang="javascript"
-						source={require("./bad-test-1.example")}
-					></CodePane>
+						source={require('./bad-test-2.example')}
+					/>
 				</Slide>
 				<Slide>
-					<Text>Users don't parse pages using jquery selectors</Text>
-					<Text>
-						Also, a selector like this would need to be updated if
-						another input with a type of text was added
-					</Text>
+					<Heading>Bad testing practice</Heading>
+					<List>
+						<ListItem>
+							Directly calling and testing a class method is
+							testing implementation
+						</ListItem>
+						<ListItem>
+							Can create a false positive situation -- just
+							because state is accurate, we don't know from our
+							tests that the user is seeing this on the dom
+						</ListItem>
+						<ListItem>
+							Would need to be updated if component was refactored
+						</ListItem>
+					</List>
 				</Slide>
 				<Slide>
-					<Heading>Bad test example 2</Heading>
+					<Heading>Better testing practice</Heading>
+				</Slide>
+				<Slide>
 					<CodePane
 						lang="javascript"
-						source={require("./bad-test-2.example")}
-					></CodePane>
+						source={require('./login-component.example')}
+					/>
 				</Slide>
 				<Slide>
-					<Text>
-						Directly calling and testing a class method is testing
-						implementation
-					</Text>
-					<Text>
-						Can create a false positive situation -- just because
-						state is accurate, we don't know from our tests that the
-						user is seeing this on the dom
-					</Text>
-					<Text>
-						Would need to be updated if component was refactored
-					</Text>
+					<CodePane
+						lang="javascript"
+						source={require('./login-test.example')}
+					/>
+				</Slide>
+				<Slide>
+					<Heading>Takeaways</Heading>
+					<List>
+						<ListItem>
+							Testing UI/react components doesn't have to be
+							difficult, intimidating, or time consuming
+						</ListItem>
+					</List>
+					<List>
+						<ListItem>
+							Tests should be written with consideration for the
+							user first
+						</ListItem>
+					</List>
 				</Slide>
 			</Deck>
 		);

@@ -14,7 +14,7 @@ Slide 1 (intro):
 			-Avoiding uneccessary tests
 Slide 2 (why do we write tests?):
 	-TDD - perhaps a faster way to develop?
-	-Gives us confidence our app is working how it's supposed
+	-Gives us confidence our app is working how it's supposed to
 	-Regression
 	-Documentation for incoming devs
 	-Tests should be saving you time in the long run

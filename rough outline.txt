@@ -24,3 +24,19 @@ React Testing Library
 		-Enter react-testing-library
 			
 	3. How
+
+
+Timeline
+2.5 min intro/setup
+5 min intro
+	-What is react testing library?
+	-Why does it matter?
+	-Core philosophy
+5 min live coding
+	-Base login component
+	-Mock fetch
+	-Tests themselves
+	-Have commits ready to pull in if something goes wrong
+2.5 min Q/A
+
++-5

@@ -1,0 +1,32 @@
+import React from 'react';
+import Login from './login';
+import { render, fireEvent, waitForElement } from '@testing-library/react';
+
+describe('Login', () => {
+	global.fetch = jest.fn(() => Promise.resolve());
+
+	let wrapper;
+	beforeEach(() => {
+		wrapper = render(<Login />);
+	});
+
+	it('should render', () => {
+		expect(true).toBe(true);
+	});
+
+	it('should let users login', async () => {
+		const userInput = wrapper.getByLabelText('Username');
+		const passwordInput = wrapper.getByLabelText('Pass');
+		const button = wrapper.getByText('Login');
+
+		fireEvent.change(userInput, { target: { value: 'daf' } });
+		fireEvent.change(passwordInput, { target: { value: 'password' } });
+		fireEvent.click(button);
+
+		const successMessage = await waitForElement(() =>
+			wrapper.getByText('You are logged in')
+		);
+
+		expect(successMessage).toBeTruthy();
+	});
+});
