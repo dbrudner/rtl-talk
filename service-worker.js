@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rtl-talk/precache-manifest.d78e9e80dbc7a486f86bc91415fb700b.js"
+  "/rtl-talk/precache-manifest.5f1485dda6154a107e6e083870a4f574.js"
 );
 
 workbox.clientsClaim();
