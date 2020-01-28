@@ -3,23 +3,23 @@ import Login from './login';
 import { render, fireEvent, waitForElement } from '@testing-library/react';
 
 describe('Login', () => {
-	global.fetch = jest.fn(() => Promise.resolve());
+	jest.spyOn(window, 'fetch').mockImplementationOnce(() => {
+		return Promise.resolve({
+			json: () => Promise.resolve({})
+		});
+	});
 
 	let wrapper;
 	beforeEach(() => {
 		wrapper = render(<Login />);
 	});
 
-	it('should render', () => {
-		expect(true).toBe(true);
-	});
-
-	it('should let users login', async () => {
+	it('should display an error message after logging in', async () => {
 		const userInput = wrapper.getByLabelText('Username');
 		const passwordInput = wrapper.getByLabelText('Pass');
 		const button = wrapper.getByText('Login');
 
-		fireEvent.change(userInput, { target: { value: 'daf' } });
+		fireEvent.change(userInput, { target: { value: 'dave' } });
 		fireEvent.change(passwordInput, { target: { value: 'password' } });
 		fireEvent.click(button);
 
